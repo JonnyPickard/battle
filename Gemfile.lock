@@ -1,5 +1,9 @@
 GEM
+<<<<<<< HEAD
   remote: http://rubygems.org/
+=======
+  remote: https://rubygems.org/
+>>>>>>> d79669074697bff3a830de6fd179897e3afd4036
   specs:
     addressable (2.4.0)
     capybara (2.6.2)
