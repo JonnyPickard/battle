@@ -8,4 +8,7 @@ class Game
   def attack(player)
     player.reduce_hitpoints
   end
+
+  def turn_switcher
+  end
 end

@@ -24,4 +24,10 @@ describe Game do
       game.attack(player_1)
     end
   end
+
+  describe '#turn_switcher' do
+    it 'switches turns after attack' do
+      
+    end
+  end
 end
