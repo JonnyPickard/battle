@@ -43,3 +43,5 @@ class Battle < Sinatra::Base
     erb(:play2)
   # start the server if ruby file executed directly
   run! if app_file == $
+
+end
