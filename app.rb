@@ -17,35 +17,45 @@ class Battle < Sinatra::Base
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
     session[:game] = Game.new(player_1, player_2)
-    redirect '/play'
+    redirect '/player_1'
   end
 
-  get '/play' do
+  get '/player_1' do
     game = session[:game]
     @player_1_name = game.player_1.name
     @player_2_name = game.player_2.name
     @player_1_hitpoints = game.player_1.hitpoints
     @player_2_hitpoints = game.player_2.hitpoints
-    erb :play, :layout => :'layout'
+    erb :player_1, :layout => :'layout'
   end
 
-  get '/attack' do
+  get '/attacking_2' do
     game = session[:game]
     @player_1_name = game.player_1.name
     @player_2_name = game.player_2.name
     game.attack(game.player_2)
     @player_1_hitpoints = game.player_1.hitpoints
     @player_2_hitpoints = game.player_2.hitpoints
-    erb :attack, :layout => :'layout'
+    erb :attacking_2, :layout => :'layout'
   end
 
-  get '/play2' do
+  get '/player_2' do
     game = session[:game]
     @player_1_name = game.player_1.name
     @player_2_name = game.player_2.name
     @player_1_hitpoints = game.player_1.hitpoints
     @player_2_hitpoints = game.player_2.hitpoints
-    erb :play2, :layout => :'layout'
+    erb :player_2, :layout => :'layout'
+  end
+
+  get '/attacking_1' do
+    game = session[:game]
+    @player_1_name = game.player_1.name
+    @player_2_name = game.player_2.name
+    game.attack(game.player_1)
+    @player_1_hitpoints = game.player_1.hitpoints
+    @player_2_hitpoints = game.player_2.hitpoints
+    erb :attacking_1, :layout => :'layout'
   end
 
   run! if app_file == $0
