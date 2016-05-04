@@ -3,12 +3,14 @@ require 'shotgun'
 require './lib/player'
 require './lib/game'
 
+Tilt.register Tilt::ERBTemplate, 'html.erb' # configure sinatra through tilt to use html.erb files
+
 class Battle < Sinatra::Base
 
   enable :sessions
 
   get '/' do
-    erb(:index)
+    erb :'index', :layout => :'layout'
   end
 
   post '/names' do
@@ -23,7 +25,7 @@ class Battle < Sinatra::Base
     @player_2_name = $game.player_2.name
     @player_1_hitpoints = $game.player_1.hitpoints
     @player_2_hitpoints = $game.player_2.hitpoints
-    erb(:play)
+    erb :play, :layout => :'layout'
   end
 
   get '/attack' do
@@ -32,7 +34,7 @@ class Battle < Sinatra::Base
     $game.attack($game.player_2)
     @player_1_hitpoints = $game.player_1.hitpoints
     @player_2_hitpoints = $game.player_2.hitpoints
-    erb(:attack)
+    erb(:attack, :layout => :'layout')
   end
 
   get '/play2' do
@@ -40,7 +42,7 @@ class Battle < Sinatra::Base
     @player_2_name = $game.player_2.name
     @player_1_hitpoints = $game.player_1.hitpoints
     @player_2_hitpoints = $game.player_2.hitpoints
-    erb(:play2)
+    erb(:play2, :layout => :'layout')
   end
 
   run! if app_file == $0

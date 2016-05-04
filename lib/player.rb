@@ -1,5 +1,4 @@
 class Player
-
   attr_reader :name, :hitpoints
 
   def initialize(name, hitpoints=60)
