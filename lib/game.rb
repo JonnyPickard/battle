@@ -1,5 +1,6 @@
 class Game
   attr_reader :player_1, :player_2
+
   def initialize(player_1, player_2)
     @player_1 = player_1
     @player_2 = player_2
@@ -9,6 +10,4 @@ class Game
     player.reduce_hitpoints
   end
 
-  def turn_switcher
-  end
 end
