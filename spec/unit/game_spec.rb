@@ -27,7 +27,7 @@ describe Game do
 
   describe '#turn_switcher' do
     it 'switches turns after attack' do
-      
+
     end
   end
 end

@@ -41,7 +41,8 @@ class Battle < Sinatra::Base
     @player_1_hitpoints = $game.player_1.hitpoints
     @player_2_hitpoints = $game.player_2.hitpoints
     erb(:play2)
-  # start the server if ruby file executed directly
-  run! if app_file == $
+  end
+
+  run! if app_file == $0
 
 end
