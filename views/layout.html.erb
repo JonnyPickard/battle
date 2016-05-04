@@ -5,5 +5,7 @@
 <body>
   <h1>Time to fight!</h1>
   <h2><p><%= @player_1_name %> vs <%= @player_2_name %></p></h2>
+  <h3><%=@player_2_name%>: <%=@player_2_hitpoints%> hp
+  <%=@player_1_name%>: <%=@player_1_hitpoints%> hp</h3>
   <%= yield %>
 </body>
