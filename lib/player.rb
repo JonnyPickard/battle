@@ -1,5 +1,6 @@
 class Player
-  attr_reader :name, :hitpoints
+  attr_reader :name
+  attr_accessor :hitpoints
 
   def initialize(name, hitpoints=60)
     @name = name
@@ -13,4 +14,5 @@ class Player
   def dead?
     @hitpoints <= 0
   end
+
 end
