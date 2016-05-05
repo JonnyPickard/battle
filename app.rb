@@ -33,7 +33,6 @@ class Battle < Sinatra::Base
   end
 
   get '/player_2' do
-    game = session[:game]
     load_game(session[:game])
     erb :player_2, :layout => :'layout'
   end
