@@ -9,4 +9,8 @@ class Player
   def reduce_hitpoints
     @hitpoints -= 10
   end
+
+  def dead?
+    @hitpoints <= 0
+  end
 end

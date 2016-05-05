@@ -10,4 +10,8 @@ class Game
     player.reduce_hitpoints
   end
 
+  def winner
+    return @player_2 if @player_1.dead?
+    return @player_1 if @player_2.dead?
+  end
 end

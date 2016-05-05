@@ -22,6 +22,8 @@ class Battle < Sinatra::Base
 
   get '/player_1' do
     load_game(session[:game])
+    game = session[:game]
+    win?(game.player_2)
     erb :player_1, :layout => :'layout'
   end
 
@@ -34,6 +36,8 @@ class Battle < Sinatra::Base
 
   get '/player_2' do
     load_game(session[:game])
+    game = session[:game]
+    win?(game.player_1)
     erb :player_2, :layout => :'layout'
   end
 
@@ -42,6 +46,16 @@ class Battle < Sinatra::Base
     game.attack(game.player_1)
     load_game(session[:game])
     erb :attacking_1, :layout => :'layout'
+  end
+
+  get "/winner" do
+    @game = session[:game]
+    load_game(session[:game])
+    erb :winner
+  end
+
+  def win?(player)
+    redirect "/winner" if player.dead?
   end
 
   def load_game(game)
