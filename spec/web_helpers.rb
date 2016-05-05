@@ -6,11 +6,13 @@ def sign_in_and_play
 end
 
 def attack_player_2
-  click_button "Attack"
   visit("/player_1")
+  click_button "Attack"
+  click_button "End Turn"
 end
 
 def attack_player_1
-  click_button "Attack"
   visit("/player_2")
+  click_button "Attack"
+  click_button "End Turn"
 end

@@ -21,9 +21,9 @@ class Battle < Sinatra::Base
   end
 
   get '/player_1' do
-    load_game(session[:game])
     game = session[:game]
-    win?(game.player_2)
+    win?(game.player_1)
+    load_game(session[:game])
     erb :player_1, :layout => :'layout'
   end
 
@@ -35,9 +35,9 @@ class Battle < Sinatra::Base
   end
 
   get '/player_2' do
-    load_game(session[:game])
     game = session[:game]
-    win?(game.player_1)
+    win?(game.player_2)
+    load_game(session[:game])
     erb :player_2, :layout => :'layout'
   end
 
