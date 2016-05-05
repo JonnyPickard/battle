@@ -8,7 +8,7 @@ class Player
   end
 
   def reduce_hitpoints
-    @hitpoints -= 10
+    @hitpoints -= rand(1..10)
   end
 
   def dead?
