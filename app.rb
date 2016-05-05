@@ -21,43 +21,36 @@ class Battle < Sinatra::Base
   end
 
   get '/player_1' do
-    game = session[:game]
-    @player_1_name = game.player_1.name
-    @player_2_name = game.player_2.name
-    @player_1_hitpoints = game.player_1.hitpoints
-    @player_2_hitpoints = game.player_2.hitpoints
+    load_game(session[:game])
     erb :player_1, :layout => :'layout'
   end
 
   get '/attacking_2' do
     game = session[:game]
-    @player_1_name = game.player_1.name
-    @player_2_name = game.player_2.name
     game.attack(game.player_2)
-    @player_1_hitpoints = game.player_1.hitpoints
-    @player_2_hitpoints = game.player_2.hitpoints
+    load_game(session[:game])
     erb :attacking_2, :layout => :'layout'
   end
 
   get '/player_2' do
     game = session[:game]
-    @player_1_name = game.player_1.name
-    @player_2_name = game.player_2.name
-    @player_1_hitpoints = game.player_1.hitpoints
-    @player_2_hitpoints = game.player_2.hitpoints
+    load_game(session[:game])
     erb :player_2, :layout => :'layout'
   end
 
   get '/attacking_1' do
     game = session[:game]
-    @player_1_name = game.player_1.name
-    @player_2_name = game.player_2.name
     game.attack(game.player_1)
-    @player_1_hitpoints = game.player_1.hitpoints
-    @player_2_hitpoints = game.player_2.hitpoints
+    load_game(session[:game])
     erb :attacking_1, :layout => :'layout'
   end
 
-  run! if app_file == $0
+  def load_game(game)
+    @player_1_name = game.player_1.name
+    @player_2_name = game.player_2.name
+    @player_1_hitpoints = game.player_1.hitpoints
+    @player_2_hitpoints = game.player_2.hitpoints
+  end
 
+  run! if app_file == $0
 end
